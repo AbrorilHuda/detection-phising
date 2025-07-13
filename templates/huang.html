@@ -1,0 +1,146 @@
+<!-- templates/index.html -->
+{% extends "base.html" %} {% block content %}
+
+<!-- templates/about.html -->
+{% extends "base.html" %} {% block title %}About - Phishing Detection System{%
+endblock %} {% block content %}
+<div class="main-container">
+  <div class="hero-section">
+    <h1><i class="fas fa-info-circle"></i> Tentang Sistem</h1>
+    <p>Sistem Pakar untuk Deteksi Phishing dengan Akurasi Tinggi</p>
+  </div>
+
+  <div class="form-section">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Apa itu Phishing?</h3>
+        <p>
+          Phishing adalah teknik penipuan siber yang bertujuan mencuri informasi
+          sensitif seperti username, password, dan detail kartu kredit dengan
+          menyamar sebagai entitas tepercaya dalam komunikasi elektronik.
+        </p>
+
+        <h3>Bagaimana Sistem Ini Bekerja?</h3>
+        <p>
+          Sistem ini menggunakan pendekatan sistem pakar (expert system) yang
+          menggabungkan:
+        </p>
+        <ul>
+          <li>
+            <strong>Analisis URL Mendalam</strong> - Memeriksa struktur,
+            sertifikat SSL, dan pola mencurigakan
+          </li>
+          <li>
+            <strong>Deteksi Typosquatting</strong> - Mengidentifikasi domain
+            palsu yang mirip dengan situs resmi
+          </li>
+          <li>
+            <strong>Analisis Konten</strong> - Mendeteksi pola social
+            engineering dan kata kunci mencurigakan
+          </li>
+          <li>
+            <strong>Threat Intelligence</strong> - Menggunakan blacklist dan
+            database ancaman terkini
+          </li>
+        </ul>
+
+        <h3>Fitur Utama</h3>
+        <ul>
+          <li>✅ Deteksi real-time dengan akurasi tinggi</li>
+          <li>✅ Analisis multi-layer (URL, konten, metadata)</li>
+          <li>✅ Confidence scoring dan risk assessment</li>
+          <li>✅ Rekomendasi aksi yang spesifik</li>
+          <li>✅ Interface yang user-friendly</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="stats-card">
+          <h4>Statistik Sistem</h4>
+          <div class="stats-number">10+</div>
+          <small>Aturan Deteksi</small>
+          <hr />
+          <div class="stats-number">99%</div>
+          <small>Target Akurasi</small>
+          <hr />
+          <div class="stats-number">24/7</div>
+          <small>Monitoring</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!-- templates/help.html -->
+{% extends "base.html" %} {% block title %}Help - Phishing Detection System{%
+endblock %} {% block content %}
+<div class="main-container">
+  <div class="hero-section">
+    <h1><i class="fas fa-question-circle"></i> Panduan Penggunaan</h1>
+    <p>Cara menggunakan sistem deteksi phishing</p>
+  </div>
+
+  <div class="form-section">
+    <h3>Cara Menggunakan Sistem</h3>
+
+    <div class="detection-item">
+      <h5><i class="fas fa-step-forward"></i> Langkah 1: Input Data</h5>
+      <p>
+        Masukkan URL atau konten pesan yang ingin Anda analisis. Anda dapat
+        mengisi salah satu atau keduanya untuk hasil yang lebih akurat.
+      </p>
+    </div>
+
+    <div class="detection-item">
+      <h5><i class="fas fa-step-forward"></i> Langkah 2: Analisis</h5>
+      <p>
+        Klik tombol "Analisis Phishing" untuk memulai proses deteksi. Sistem
+        akan menganalisis input Anda menggunakan berbagai teknik.
+      </p>
+    </div>
+
+    <div class="detection-item">
+      <h5><i class="fas fa-step-forward"></i> Langkah 3: Interpretasi Hasil</h5>
+      <p>Hasil analisis akan menampilkan:</p>
+      <ul>
+        <li>
+          <strong>Probabilitas Phishing</strong> - Persentase kemungkinan
+          phishing
+        </li>
+        <li>
+          <strong>Level Risiko</strong> - Kategori risiko (Sangat Tinggi,
+          Tinggi, Sedang, Rendah)
+        </li>
+        <li>
+          <strong>Deteksi Ancaman</strong> - Daftar ancaman yang terdeteksi
+        </li>
+        <li>
+          <strong>Rekomendasi</strong> - Saran tindakan yang harus diambil
+        </li>
+      </ul>
+    </div>
+
+    <h3>Tips Keamanan</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="recommendation-item">
+          <h6><i class="fas fa-shield-alt"></i> Selalu Verifikasi</h6>
+          <p>
+            Jangan langsung percaya email yang meminta informasi pribadi.
+            Verifikasi melalui channel resmi.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="recommendation-item">
+          <h6><i class="fas fa-link"></i> Periksa URL</h6>
+          <p>
+            Selalu periksa URL dengan teliti sebelum mengklik, terutama yang
+            diterima melalui email.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
