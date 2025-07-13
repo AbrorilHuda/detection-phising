@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask, render_template, request, jsonify
 import traceback
 from datetime import datetime
@@ -11,10 +10,9 @@ app = Flask(__name__)
 # Inisialisasi Sistem Pakar
 kb = BasisPengetahuanPhishing()
 engine = MesinInferensiPhishing(kb)
-
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',time=datetime.now())
 
 @app.route('/detect', methods=['POST'])
 def detect_phishing():
@@ -53,7 +51,8 @@ def detect_phishing():
                              total_aturan=formatted_results['total_aturan'],
                              fakta_terdeteksi=formatted_results['fakta_terdeteksi'],
                              rekomendasi=formatted_results['rekomendasi'],
-                             timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+                             timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                             time=datetime.now())
     
     except Exception as e:
         error_msg = f"Terjadi kesalahan dalam analisis: {str(e)}"

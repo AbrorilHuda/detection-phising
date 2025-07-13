@@ -5,10 +5,7 @@ from urllib.parse import urlparse
 import tldextract
 import whois
 from datetime import datetime
-import dns.resolver
 import Levenshtein
-
-
 
 class BasisPengetahuanPhishing:
     def __init__(self):
@@ -82,6 +79,13 @@ class BasisPengetahuanPhishing:
                 "hasil": "Konten menggunakan teknik social engineering",
                 "bobot": 0.22,
                 "prioritas": "TINGGI"
+            },
+            {
+                "nama": "Aturan_11_web_judi_online",
+                "kondisi": ["domain_mengandung_unsur_judi"],
+                "hasil": "Domain mengandung kata kunci terkait judi online",
+                "bobot": 0.10,
+                "prioritas": "RENDAH"
             }
         ]
         
@@ -91,7 +95,7 @@ class BasisPengetahuanPhishing:
             "microsoft.com", "apple.com", "amazon.com", "netflix.com", "youtube.com",
             "bca.co.id", "bri.co.id", "bni.co.id", "mandiri.co.id", "cimb.co.id",
             "paypal.com", "ebay.com", "spotify.com", "dropbox.com", "github.com",
-            "stackoverflow.com", "reddit.com", "wikipedia.org", "whatsapp.com"
+            "stackoverflow.com", "reddit.com", "wikipedia.org", "whatsapp.com", "dana.id", "shopee.co.id"
         ]
         
         self.url_shorteners = [
@@ -102,6 +106,11 @@ class BasisPengetahuanPhishing:
         # Simulated blacklist - in production, this would be from threat intelligence feeds
         self.blacklist_domains = [
             "phishing-example.com", "fake-bank.net", "scam-site.org"
+        ]
+        
+        self.regex_judol_blacklist = [
+            r"[a-z]*[0-9]{2,}$",   
+            r"^(slot|judi|casino).*",
         ]
         
         self.suspicious_keywords = {
@@ -374,9 +383,26 @@ class MesinInferensiPhishing:
         # Analisis domain
         domain = url_analysis.get('domain', '')
         if domain:
+            
+            print("="*10)
+            print("DEBUG DOMAIN ")
+            print(f"Domain: {domain}")
+            print("="*10)
+            
             # Cek blacklist
             if domain in self.basis_pengetahuan.blacklist_domains:
                 fakta.add("domain_dalam_blacklist")
+            
+            # belum fiks masih di development
+            import re
+            for pattern in self.basis_pengetahuan.regex_judol_blacklist:
+                print("="*10)
+                print("DEBUG DOMAIN ")
+                print(f"Domain: {domain}")
+                print("="*10)
+                if re.search(pattern, domain.split('.')[0]):
+                    fakta.add("domain_mengandung_unsur_judi")
+                    break  
             
             # Cek umur domain
             domain_age = self.analisis_domain_age(domain)
@@ -524,6 +550,9 @@ class MesinInferensiPhishing:
         
         return recommendations
 
+
+
+## Debug Mode 
 # Contoh penggunaan
 if __name__ == "__main__":
     # Inisialisasi sistem
@@ -532,7 +561,7 @@ if __name__ == "__main__":
     
     # Contoh data input
     data_test = {
-        "url": "https://paypa1-security.com/verify-account",
+        "url": "https://fnatix-layananfr.paypaL.biz.id/kaget=s3eygtewj&r=cZPhfp/",
         "konten_email": "Urgent: Your PayPal account will be suspended if you don't verify your login details immediately. Click here to confirm your account.",
         "tata_bahasa_buruk": False,
         "domain_tidak_dikenal": True
