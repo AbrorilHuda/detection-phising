@@ -3,7 +3,8 @@ import traceback
 from datetime import datetime
 
 # Import sistem pakar yang telah ditingkatkan
-from expert_system import BasisPengetahuanPhishing, MesinInferensiPhishing
+from model.BasisPengetahuanPhising import BasisPengetahuanPhishing
+from model.MesinInferensiPhising import MesinInferensiPhishing
 
 app = Flask(__name__)
 
