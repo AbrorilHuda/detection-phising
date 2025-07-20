@@ -1,5 +1,11 @@
 # Sistem Pakar Deteksi Link Phishing
 
+<img align="top" src="https://media.tenor.com/yjOrdcOkLPUAAAAj/green-dot.gif" width="22px" height="22px" />
+<span>Early Development Stage</span>
+
+> [!WARNING]
+> projek ini dalam tahap development masih banyak kekurangan 🐡
+
 ## Deskripsi Proyek
 
 Sistem Pakar Deteksi Link Phishing adalah aplikasi web berbasis Flask yang menggunakan pendekatan expert system untuk mengidentifikasi dan menganalisis URL serta konten email yang berpotensi phishing. Sistem ini menggunakan basis pengetahuan dengan aturan-aturan terstruktur dan mesin inferensi yang dapat memberikan analisis mendalam terhadap ancaman phishing.
